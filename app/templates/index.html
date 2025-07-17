@@ -4,12 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>KnowFind</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
 </head>
 <body>
   <!-- Section 1: Hero -->
   <section class="hero">
-    <img src="assets/icons/banner.png" alt="KnowFind Bannière" class="hero-banner" />
+    
+    <img src="{{ url_for('static', filename='assets/icons/banner.png') }}" alt="KnowFind Bannière" class="hero-banner" />
   </section>
 
   <!-- Section 2: Problème -->
@@ -19,7 +20,8 @@
       <p class="intro">Retours d'expériences (REX) inexploitables, outils non documentés, expertises internes invisibles..</p>
       <div class="problem-cards">
         <div class="card">
-          <img src="assets/icons/clock.png" alt="Temps perdu">
+          
+          <img src="{{ url_for('static', filename='assets/icons/clock.png') }}" alt="Temps perdu">
           <h3>Temps perdu</h3>
           <p>20 % du temps d’un consultant est consacré à chercher des informations existantes dans les bases de donnée ou en demandant à droite et à gauche.</p>
         </div>
