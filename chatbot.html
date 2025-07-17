@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assistant IA</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e6f7fa;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        header {
+            background-color: #00bcd4;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .chat-container {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .message {
+            max-width: 70%;
+            padding: 10px 15px;
+            border-radius: 15px;
+            font-size: 15px;
+        }
+
+        .user-message {
+            align-self: flex-end;
+            background-color: #d1ecf1;
+            color: #004085;
+        }
+
+        .bot-message {
+            align-self: flex-start;
+            background-color: #ffffff;
+            color: #333;
+            border: 1px solid #cce5ff;
+        }
+
+        .input-area {
+            display: flex;
+            padding: 15px;
+            background-color: #fff;
+            border-top: 1px solid #ccc;
+        }
+
+        .input-area input {
+            flex: 1;
+            padding: 10px;
+            font-size: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .input-area button {
+            margin-left: 10px;
+            padding: 10px 20px;
+            font-size: 15px;
+            background-color: #00bcd4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .input-area button:hover {
+            background-color: #0097a7;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Assistant IA</h1>
+        <p>Posez une question sur votre document PDF</p>
+    </header>
+
+    <div class="chat-container" id="chat">
+        <div class="bot-message message">Bonjour ! Que voulez-vous savoir sur le document que vous avez envoyé ?</div>
+    </div>
+
+    <div class="input-area">
+        <input type="text" id="userInput" placeholder="Écrivez votre question ici...">
+        <button onclick="sendMessage()">Envoyer</button>
+    </div>
+
+    <script>
+        function sendMessage() {
+            const input = document.getElementById("userInput");
+            const text = input.value.trim();
+            if (!text) return;
+
+            const userMsg = document.createElement("div");
+            userMsg.className = "message user-message";
+            userMsg.textContent = text;
+            document.getElementById("chat").appendChild(userMsg);
+
+            input.value = "";
+
+            const botMsg = document.createElement("div");
+            botMsg.className = "message bot-message";
+            botMsg.textContent = "Réponse IA simulée (votre collègue branchera l’API ici)";
+            document.getElementById("chat").appendChild(botMsg);
+
+            document.getElementById("chat").scrollTop = document.getElementById("chat").scrollHeight;
+        }
+    </script>
+</body>
+</html>
