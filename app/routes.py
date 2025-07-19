@@ -6,3 +6,6 @@ def index():
 @app.route('/upload_rex')
 def upload_rex():
     return render_template('upload_rex.html')
+@app.route('/chatbot')
+def chatbot():
+    return render_template('chatbot.html')
