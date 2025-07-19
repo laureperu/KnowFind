@@ -7,79 +7,100 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
 </head>
 <body>
-  <!-- Section 1: Hero -->
-  <section class="hero">
-    
-    <img src="{{ url_for('static', filename='assets/icons/banner.png') }}" alt="KnowFind Bannière" class="hero-banner" />
-  </section>
 
-  <!-- Section 2: Problème -->
-  <section class="problem">
-    <div class="container">
-      <h2>Vos consultants passent en moyenne 1 jour par semaine à chercher une info</h2>
-      <p class="intro">Retours d'expériences (REX) inexploitables, outils non documentés, expertises internes invisibles..</p>
-      <div class="problem-cards">
-        <div class="card">
-          
-          <img src="{{ url_for('static', filename='assets/icons/clock.png') }}" alt="Temps perdu">
-          <h3>Temps perdu</h3>
-          <p>20 % du temps d’un consultant est consacré à chercher des informations existantes dans les bases de donnée ou en demandant à droite et à gauche.</p>
-        </div>
-        <div class="card">
-          <img src="{{ url_for('static', filename='assets/icons/briefcase.png') }}" alt="Expertise inaccessible" />
-          <h3>Expertise inaccessible</h3>
-          <p>Difficile d’identifier qui a travaillé sur quoi, et sur quel secteur ou outil.</p>
-        </div>
-        <div class="card">
-          <img src="{{ url_for('static', filename='assets/icons/memory-loss.png') }}" alt="Savoir perdu" />
-          <h3>REX non valorisés</h3>
-          <p>Des enseignements précieux perdus, car les REX ne sont ni standardisés ni réutilisables.</p>
-        </div>
+<!-- Sidebar -->
+<div class="sidebar" id="sidebar">
+  <button class="close-btn" onclick="toggleSidebar()">×</button>
+  <ul class="sidebar-links">
+    <li><a href="#nous-contacter">Nous contacter</a></li>
+    <li><a href="#qui-sommes-nous">Qui sommes-nous</a></li>
+    <li><a href="#produits">Produits & Services</a></li>
+    <li><a href="#actu">Actualités</a></li>
+  </ul>
+</div>
+
+<!-- Top bar -->
+<header class="topbar">
+  <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+  <div class="logo">KnowFind</div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <img src="{{ url_for('static', filename='assets/icons/banner.png') }}" alt="KnowFind Bannière" class="hero-banner" />
+</section>
+
+<!-- Problème -->
+<section class="problem">
+  <div class="container">
+    <h2>Vos consultants passent en moyenne 1 jour par semaine à chercher une info</h2>
+    <p class="intro">Retours d'expériences (REX) inexploitables, outils non documentés, expertises internes invisibles..</p>
+    <div class="problem-cards">
+      <div class="card">
+        <img src="{{ url_for('static', filename='assets/icons/clock.png') }}" alt="Temps perdu">
+        <h3>Temps perdu</h3>
+        <p>20 % du temps d’un consultant est consacré à chercher des informations existantes...</p>
+      </div>
+      <div class="card">
+        <img src="{{ url_for('static', filename='assets/icons/briefcase.png') }}" alt="Expertise inaccessible" />
+        <h3>Expertise inaccessible</h3>
+        <p>Difficile d’identifier qui a travaillé sur quoi...</p>
+      </div>
+      <div class="card">
+        <img src="{{ url_for('static', filename='assets/icons/memory-loss.png') }}" alt="Savoir perdu" />
+        <h3>REX non valorisés</h3>
+        <p>Des enseignements précieux perdus...</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Section 3: Solution -->
-  <section class="solution">
-    <div class="container">
-      <h2>KnowFind : votre mémoire vivante</h2>
-      <p class="intro">
-        Une plateforme pour structurer vos REX, cartographier vos expertises, et répondre à chaque question métier avec un assistant IA.
-      </p>
-      <div class="solution-features">
-        <div class="feature">
-          <img src="{{ url_for('static', filename='assets/icons/contract.png') }}" alt="REX structuré" />
-          <h3>REX standardisés et enrichis</h3>
-          <p>Chaque retour d’expérience est structuré, reformulé et taggué automatiquement.</p>
-        </div>
-        <div class="feature">
-          <img src="{{ url_for('static', filename='assets/icons/briefcase.png') }}" alt="Cartographie des experts" />
-          <h3>Cartographie des expertises</h3>
-          <p>Visualisez qui a travaillé sur quoi, avec quels outils et dans quels secteurs.</p>
-        </div>
-        <div class="feature">
-          <img src="{{ url_for('static', filename='assets/icons/like.png') }}" alt="Assistant IA" />
-          <h3>Assistant IA contextuel</h3>
-          <p>Un assistant intelligent qui répond à vos questions en s’appuyant sur les cas les plus pertinents.</p>
-        </div>
+<!-- Solution -->
+<section class="solution">
+  <div class="container">
+    <h2>KnowFind : votre mémoire vivante</h2>
+    <p class="intro">Une plateforme pour structurer vos REX...</p>
+    <div class="solution-features">
+      <div class="feature">
+        <img src="{{ url_for('static', filename='assets/icons/contract.png') }}" alt="REX structuré" />
+        <h3>REX standardisés</h3>
+        <p>Chaque retour d’expérience est structuré...</p>
+      </div>
+      <div class="feature">
+        <img src="{{ url_for('static', filename='assets/icons/briefcase.png') }}" alt="Cartographie des experts" />
+        <h3>Cartographie des expertises</h3>
+        <p>Visualisez qui a travaillé sur quoi...</p>
+      </div>
+      <div class="feature">
+        <img src="{{ url_for('static', filename='assets/icons/like.png') }}" alt="Assistant IA" />
+        <h3>Assistant IA contextuel</h3>
+        <p>Un assistant intelligent qui répond à vos questions...</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Section 4: Appel à l'action -->
-  <section class="cta-final">
-    <div class="container">
-      <h2>Prêt à révéler l’intelligence collective de votre cabinet ?</h2>
-      <p>Contactez-nous pour une démo personnalisée.</p>
-      <a class="button" href="mailto:contact@knowfind.com?subject=Demande%20de%20d%C3%A9mo%20KnowFind">Demander une démo</a>
-    </div>
-  </section>
+<!-- Call to Action -->
+<section class="cta-final">
+  <div class="container">
+    <h2>Prêt à révéler l’intelligence collective de votre cabinet ?</h2>
+    <p>Contactez-nous pour une démo personnalisée.</p>
+    <a class="button" href="{{ url_for('upload_rex') }}">Demander une démo</a>
+  </div>
+</section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <p>&copy; 2025 KnowFind. Tous droits réservés.</p>
-    </div>
-  </footer>
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2025 KnowFind. Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script>
+function toggleSidebar() {
+  document.getElementById("sidebar").classList.toggle("active");
+}
+</script>
+
 </body>
 </html>
