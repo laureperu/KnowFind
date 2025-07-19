@@ -1,123 +1,176 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Assistant IA</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #e6f7fa;
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assistant IA</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #e6f7fa;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
 
-        header {
-            background-color: #00bcd4;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
+    header {
+      background-color: #00bcd4;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
 
-        .chat-container {
-            flex: 1;
-            padding: 20px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
+    .chat-container {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
 
-        .message {
-            max-width: 70%;
-            padding: 10px 15px;
-            border-radius: 15px;
-            font-size: 15px;
-        }
+    .message {
+      max-width: 70%;
+      padding: 10px 15px;
+      border-radius: 15px;
+      font-size: 15px;
+      white-space: pre-wrap;
+    }
 
-        .user-message {
-            align-self: flex-end;
-            background-color: #d1ecf1;
-            color: #004085;
-        }
+    .user-message {
+      align-self: flex-end;
+      background-color: #d1ecf1;
+      color: #004085;
+    }
 
-        .bot-message {
-            align-self: flex-start;
-            background-color: #ffffff;
-            color: #333;
-            border: 1px solid #cce5ff;
-        }
+    .bot-message {
+      align-self: flex-start;
+      background-color: #ffffff;
+      color: #333;
+      border: 1px solid #cce5ff;
+    }
 
-        .input-area {
-            display: flex;
-            padding: 15px;
-            background-color: #fff;
-            border-top: 1px solid #ccc;
-        }
+    .input-area {
+      display: flex;
+      padding: 15px;
+      background-color: #fff;
+      border-top: 1px solid #ccc;
+    }
 
-        .input-area input {
-            flex: 1;
-            padding: 10px;
-            font-size: 15px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
+    .input-area input {
+      flex: 1;
+      padding: 10px;
+      font-size: 15px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
 
-        .input-area button {
-            margin-left: 10px;
-            padding: 10px 20px;
-            font-size: 15px;
-            background-color: #00bcd4;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+    .input-area button {
+      margin-left: 10px;
+      padding: 10px 20px;
+      font-size: 15px;
+      background-color: #00bcd4;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
 
-        .input-area button:hover {
-            background-color: #0097a7;
-        }
-    </style>
+    .input-area button:hover {
+      background-color: #0097a7;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Assistant IA</h1>
-        <p>Posez une question sur votre document PDF</p>
-    </header>
+  <header>
+    <h1>Assistant IA</h1>
+    <p>Posez une question sur votre document PDF</p>
+  </header>
 
-    <div class="chat-container" id="chat">
-        <div class="bot-message message">Bonjour ! Que voulez-vous savoir sur le document que vous avez envoyé ?</div>
-    </div>
+  <div class="chat-container" id="chat">
+    <div class="bot-message message">Bonjour ! Que voulez-vous savoir sur le document que vous avez envoyé ?</div>
+  </div>
 
-    <div class="input-area">
-        <input type="text" id="userInput" placeholder="Écrivez votre question ici...">
-        <button onclick="sendMessage()">Envoyer</button>
-    </div>
+  <div class="input-area">
+    <input type="text" id="userInput" placeholder="Écrivez votre question ici...">
+    <button onclick="sendMessage()">Envoyer</button>
+  </div>
 
-    <script>
-        function sendMessage() {
-            const input = document.getElementById("userInput");
-            const text = input.value.trim();
-            if (!text) return;
+  <script>
+    function sendMessage() {
+      const input = document.getElementById("userInput");
+      const text = input.value.trim();
+      if (!text) return;
 
-            const userMsg = document.createElement("div");
-            userMsg.className = "message user-message";
-            userMsg.textContent = text;
-            document.getElementById("chat").appendChild(userMsg);
+      const userMsg = document.createElement("div");
+      userMsg.className = "message user-message";
+      userMsg.textContent = text;
+      document.getElementById("chat").appendChild(userMsg);
 
-            input.value = "";
+      input.value = "";
 
-            const botMsg = document.createElement("div");
-            botMsg.className = "message bot-message";
-            botMsg.textContent = "Réponse IA simulée (votre collègue branchera l’API ici)";
-            document.getElementById("chat").appendChild(botMsg);
+      const botMsg = document.createElement("div");
+      botMsg.className = "message bot-message";
+      botMsg.innerHTML = `<pre><strong>Analyse des profils clients résistants sur projets IT (basée sur 20 REX similaires)</strong>
 
-            document.getElementById("chat").scrollTop = document.getElementById("chat").scrollHeight;
-        }
-    </script>
+Méthodologie :
+- Croisement de 20 retours d'expérience complets (janv.2023-juil.2025)
+- Filtrage projets avec &gt;15% dépassement budgétaire OU &gt;10% retard
+- Analyse des métadonnées critiques : niveau_outillage ≤2, satisfaction_client ≤3, objectif_atteint="partiellement/non"
+- Pondération par secteur/domaine pour biais sectoriels
+
+---
+
+Top 5 profils résistants + stratégies de gestion :
+
+1. "Le Dirigeant Visionnaire Isolé" (Startup/TPE Tech)
+   Métadonnées typiques :
+   - Secteur: FinTech/HealthTech (72%)
+   - Taille: &lt;20 employés (85%)
+   - Domaine: IA/Cloud (100%)
+   - Contraintes: RGPD (65%), SOC2 (28%)
+   - Dépassement moyen: +32% budget, +45 jours
+
+   Problématiques récurrentes :
+   - Décisions unilatérales du CEO sans validation technique
+   - Turnover technique &gt;40% durant le projet (REX#12, #17)
+   - Documentation inexistante (niveau_outillage=1 dans 92% des cas)
+
+   Stratégies éprouvées :
+   - Impliquer le CEO dans 1 atelier technique/mois
+   - Référent technique interne dédié &gt;50%
+   - Prototypage rapide (ex: Retool)
+
+2. "L'Équipe Legacy Dépassée" (Grands Groupes Publics)
+   - Stack: Mainframe + Java 8 (100%)
+   - Silotage, délais de validation &gt;3 semaines
+   - Actions : co-construction user stories, intégration client dans daily
+
+3. "Le Contrôleur Procédurier" (Finance/Santé)
+   - Blocages sécurité, lourdeurs compliance
+   - Actions : carto exigences J+7, reporting auto, champion sécu
+
+4. "L'Expert Interne Sceptique" (ETI Industrie)
+   - Risque : redirection du projet, POCs personnels
+   - Solutions : comité technique, modules autonomes
+
+5. "Le Sponsor Fantôme" (PME)
+   - Retard moyen 58 jours
+   - Solutions : clause de présence, reporting visuel, escalade auto
+
+---
+
+Lessons Learned :
+- Niveau_outillage ≤2 → risque x4.2
+- 10h/semaine client → retards -34%
+- Kubernetes → -22% de dérives
+- Sprint 0 : atelier contraintes = -65% d'imprévus</pre>`;
+
+      document.getElementById("chat").appendChild(botMsg);
+      document.getElementById("chat").scrollTop = document.getElementById("chat").scrollHeight;
+    }
+  </script>
 </body>
 </html>
